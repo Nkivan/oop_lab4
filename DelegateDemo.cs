@@ -1,13 +1,9 @@
 namespace Lab4;
 
-/// <summary>
-/// Завдання 1: один і той самий метод (підрахунок символу в рядку), записаний двома способами -
-/// анонімним методом і лямбда-виразом, та викликаний через делегат CharCountOperation.
-/// Логіка обчислення записана безпосередньо в анонімному методі та в лямбда-виразі.
-/// </summary>
+
 public static class DelegateDemo
 {
-    /// <summary>Анонімний метод (ключове слово delegate, явні типи параметрів, цикл for).</summary>
+
     public static readonly CharCountOperation AnonymousMethod = delegate (string text, char symbol)
     {
         if (text == null) throw new ArgumentNullException(nameof(text));
@@ -20,7 +16,7 @@ public static class DelegateDemo
         return count;
     };
 
-    /// <summary>Лямбда-вираз (типи параметрів виводяться з делегата, підрахунок через LINQ).</summary>
+
     public static readonly CharCountOperation Lambda = (text, symbol) =>
         text == null
             ? throw new ArgumentNullException(nameof(text))
@@ -41,7 +37,7 @@ public static class DelegateDemo
 
         foreach ((string text, char symbol) in samples)
         {
-            // Виклик через делегат
+
             int viaAnonymous = AnonymousMethod(text, symbol);
             int viaLambda = Lambda(text, symbol);
 
@@ -64,20 +60,17 @@ public static class DelegateDemo
         Console.WriteLine($"Список викликів: {AnonymousMethod.GetInvocationList().Length} метод(и)");
     }
 
-    /// <summary>
-    /// Побічний ефект замикання: лямбда захоплює змінну (а не її значення), тому результат
-    /// залежить від значення змінної в момент виклику.
-    /// </summary>
+ 
     private static void ShowClosureSideEffect()
     {
         Console.WriteLine();
         Console.WriteLine("--- Побічний ефект замикання ---");
 
         char target = 'a';
-        Func<string, int> countTarget = text => text.Count(c => c == target);   // захоплює змінну target
+        Func<string, int> countTarget = text => text.Count(c => c == target);   
 
         Console.WriteLine($"target = '{target}': в \"banana\" знайдено {countTarget("banana")}");
-        target = 'n';   // змінили змінну ПІСЛЯ створення лямбди
+        target = 'n';   
         Console.WriteLine($"target = '{target}': в \"banana\" знайдено {countTarget("banana")} (той самий вираз, інший результат)");
     }
 }
