@@ -2,7 +2,6 @@ using System.Text;
 
 namespace Lab4;
 
-/// <summary>Інтерактивне меню: автоматичні демонстрації та самостійне введення даних.</summary>
 internal sealed class ConsoleMenu
 {
     public void Run()
@@ -35,18 +34,18 @@ internal sealed class ConsoleMenu
         }
         catch (EndOfStreamException)
         {
-            // Вхідний потік закінчився - завершуємо роботу.
+
         }
     }
 
-    // ---------- пункт 3 ----------
+ 
 
     private static void CountSymbolInteractive()
     {
         string text = ReadLine("Введіть рядок: ");
         char symbol = ReadSymbol("Введіть символ для пошуку (один): ");
 
-        // Обидва варіанти викликаються через той самий делегат CharCountOperation
+    
         int viaAnonymous = DelegateDemo.AnonymousMethod(text, symbol);
         int viaLambda = DelegateDemo.Lambda(text, symbol);
 
@@ -54,7 +53,7 @@ internal sealed class ConsoleMenu
         Console.WriteLine($"Лямбда-вираз:    символ '{symbol}' зустрічається {viaLambda} раз(и).");
     }
 
-    // ---------- пункт 4 ----------
+
 
     private static void CalculatorInteractive()
     {
@@ -118,7 +117,6 @@ internal sealed class ConsoleMenu
         }
     }
 
-    // ---------- допоміжне введення ----------
 
     private static string ReadLine(string prompt)
     {
