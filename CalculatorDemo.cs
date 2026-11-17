@@ -1,6 +1,5 @@
 namespace Lab4;
 
-/// <summary>Завдання 2-3: компонент із подією та застосунок, що обробляє цю подію.</summary>
 public static class CalculatorDemo
 {
     public static void Run()
@@ -13,7 +12,6 @@ public static class CalculatorDemo
         DivisionConsoleHandler console = new DivisionConsoleHandler();
         DivisionStatisticsHandler statistics = new DivisionStatisticsHandler();
 
-        // Підписка на подію (+=). У першого калькулятора два обробники - мультиадресність
         first.IntegerDivision += console.HandleIntegerDivision;
         first.IntegerDivision += statistics.HandleIntegerDivision;
         second.IntegerDivision += console.HandleIntegerDivision;
@@ -30,7 +28,6 @@ public static class CalculatorDemo
         Console.WriteLine($"   після множення на 3: {second.Result}");
         second.Divide(4);
 
-        // Скасування підписки (-=)
         Console.WriteLine();
         Console.WriteLine("Консольний обробник відписано від першого калькулятора (-=). Тепер повідомлень немає:");
         first.IntegerDivision -= console.HandleIntegerDivision;
@@ -38,7 +35,6 @@ public static class CalculatorDemo
         Console.WriteLine($"   {first.Name}: результат {first.Result}, статистика досі веде облік");
         Console.WriteLine($"   {statistics.Summary()}");
 
-        // Винятки не є подією: ділення на нуль та переповнення повідомляються виняткам
         Console.WriteLine();
         Console.WriteLine("Некоректні операції:");
         try { second.Divide(0); }
