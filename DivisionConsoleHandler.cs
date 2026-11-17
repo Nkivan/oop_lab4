@@ -1,9 +1,6 @@
 namespace Lab4;
 
-/// <summary>
-/// Клас-обробник: реакція застосунку на подію - повідомлення користувачеві.
-/// Метод-обробник має стандартний підпис події .NET: отримує ініціатора (sender) та аргумент події.
-/// </summary>
+
 public class DivisionConsoleHandler
 {
     public void HandleIntegerDivision(object sender, IntegerDivisionEventArgs e)
