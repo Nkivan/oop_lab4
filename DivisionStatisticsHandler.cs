@@ -1,6 +1,5 @@
 namespace Lab4;
 
-/// <summary>Другий клас-обробник тієї самої події: веде статистику виконаних ділень.</summary>
 public class DivisionStatisticsHandler
 {
     public int Count { get; private set; }
